@@ -18,3 +18,16 @@ add_executable(client
 add_executable(server 
 	src/Server.cpp
 	src/SocDef.cpp)
+
+# Locate GTest
+find_package(GTest REQUIRED)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${GTEST_INCLUDE_DIRS})
+
+# Link runTests with what we want to test and the GTest and pthread library
+add_executable(runTests 
+	unit_tests/unit_test_server.cpp 
+	)
+	# unit_tests/socket_mock.cpp
+	# src/SocDef.cpp)
+target_link_libraries(runTests ${GTEST_LIBRARIES} pthread GTest::gmock GTest::gmock_main)

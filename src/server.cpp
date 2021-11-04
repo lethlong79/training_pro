@@ -32,27 +32,31 @@ void Server::handleMsg() {
     }
 }
 
+// void Server::waitForConnection() {
+
+//     printf("Waiting for new connection\n");
+//     for (int i = 0; i < NUM_OF_CLIENTS; i++) {
+//         sockFd[i] = accept(listenFd, (struct sockaddr *)&serverAddr, 
+//                         (socklen_t*)&serverAddr);
+//         printf("%d client connected\n", i + 1);
+//     }
+   
+// }
 void Server::waitForConnection() {
 
     printf("Waiting for new connection\n");
-    for (int i = 0; i < NUM_OF_CLIENTS; i++) {
-        sockFd[i] = accept(listenFd, (struct sockaddr *)&serverAddr, 
-                        (socklen_t*)&serverAddr);
-        printf("%d client connected\n", i + 1);
-    }
    
 }
 
-int main() {
+// int main() {
 
-    Server * s = new Server();
+//     Server * s = new Server();
 
-    thread socketThread(&Server::handleMsg, s);
-    thread connectThread(&Server::waitForConnection, s);
+//     thread socketThread(&Server::handleMsg, s);
+//     thread connectThread(&Server::waitForConnection, s);
 
-    socketThread.join();
-    connectThread.join();
+//     socketThread.join();
+//     connectThread.join();
 
-    return 0;
-}
-
+//     return 0;
+// }

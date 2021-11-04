@@ -9,7 +9,6 @@
 
 class Server : public SockDef {
     int listenFd;
-    int maxSd;
     int sockFd[NUM_OF_CLIENTS];
     char dataBuffer[SIZE_OF_BUFFER];
 public:
