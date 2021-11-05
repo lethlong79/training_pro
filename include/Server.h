@@ -26,9 +26,16 @@ public:
     }
 
     // ~Server();
-    void waitForConnection();
+
+    //Wait until there are 2 clients. 
+    //Return TRUE if they are connected. Otherwise return FALSE
+    bool waitForConnection();
 
     void handleMsg();
+
+    int getListenFd ();
+    
+    int getClientFd (int index);
 };
 
 #endif

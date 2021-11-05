@@ -15,7 +15,8 @@ add_executable(client
 	src/Client.cpp
 	src/SocDef.cpp)
 
-add_executable(server 
+add_executable(server
+	src/ServerApp.cpp
 	src/Server.cpp
 	src/SocDef.cpp)
 

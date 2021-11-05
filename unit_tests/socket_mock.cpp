@@ -1,9 +1,13 @@
-#include "../include/Server.h"
-#include <string>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+// #include "../include/Server.h"
+#include <sys/socket.h>
+#include <string>
 
 using namespace std;
+
+int sock_rval;
+int sock_rcv;
 
 // Abstract SocketInterface class
 class SocketInterface {
@@ -23,6 +27,7 @@ public:
     int connect(int sockfd, const struct sockaddr *addr,
                    socklen_t addrlen) override 
     {
+        printf("Hello\n");
         return 0;
     };
     ~Socket() = default;
@@ -38,9 +43,13 @@ public:
     ~MockSocket() = default;
 };
 
-// int connect(int sockfd, const struct sockaddr *addr,
-//                    int addrlen) 
-//     {
-//         printf("Hello\n");
-//         return 0;
-//     };
+int accept(int, struct sockaddr * __restrict, socklen_t * __restrict) {
+    printf("Calling mock socket (accept)\n");
+    return sock_rval;
+}
+
+
+ssize_t recv(int, void *, size_t, int) {
+    printf("Calling from mock socket (recv)\n");
+    return sock_rcv;
+}
